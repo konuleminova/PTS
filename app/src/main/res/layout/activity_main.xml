@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="photogeneia.koteoglou.olga.pts.MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorRed">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/loginbtn"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="20dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="TOTAL POINTS 215"
+            android:textColor="@color/colorInputLayout"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/loginbtn"
+         android:layout_marginLeft="40dp"
+            android:layout_marginBottom="20dp"
+            />
+
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/toolbar"
+        android:weightSum="5">
+    <FrameLayout
+        android:id="@+id/frameContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_weight="5"/>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="60dp"
+      android:orientation="horizontal"
+     android:gravity="center"
+      >
+      <RelativeLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/mainpage">
+          <ImageView
+              android:layout_width="50dp"
+              android:layout_height="wrap_content"
+              android:background="@drawable/loginbtn"
+              android:layout_marginRight="30dp"
+              android:layout_marginBottom="20dp"
+              />
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="MainPage"
+              android:layout_alignParentBottom="true"
+              android:paddingBottom="4dp"
+              />
+      </RelativeLayout>
+      <RelativeLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/onmap">
+          <ImageView
+              android:layout_width="50dp"
+              android:layout_height="wrap_content"
+              android:background="@drawable/loginbtn"
+              android:layout_marginRight="30dp"
+              android:layout_marginBottom="20dp"
+              />
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="MainPage"
+              android:layout_alignParentBottom="true"
+              android:paddingBottom="4dp"
+              />
+      </RelativeLayout>
+      <RelativeLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/profile">
+          <ImageView
+              android:layout_width="50dp"
+              android:layout_height="wrap_content"
+              android:background="@drawable/loginbtn"
+              android:layout_marginRight="30dp"
+              android:layout_marginBottom="20dp"
+              />
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="MainPage"
+              android:layout_alignParentBottom="true"
+              android:paddingBottom="4dp"
+              />
+      </RelativeLayout>
+
+  </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
