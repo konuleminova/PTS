@@ -14,7 +14,7 @@ public class WelcomeActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_launchscreen);
+        setContentView(R.layout.launchscreen_layout);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
