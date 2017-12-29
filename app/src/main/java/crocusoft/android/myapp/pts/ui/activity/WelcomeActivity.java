@@ -1,10 +1,12 @@
-package photogeneia.koteoglou.olga.pts;
+package crocusoft.android.myapp.pts.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+
+import crocusoft.android.myapp.pts.R;
 
 /**
  * Created by Asus on 12/22/2017.

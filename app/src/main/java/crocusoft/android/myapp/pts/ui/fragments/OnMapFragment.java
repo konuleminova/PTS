@@ -1,4 +1,4 @@
-package photogeneia.koteoglou.olga.pts;
+package crocusoft.android.myapp.pts.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import crocusoft.android.myapp.pts.R;
 
 /**
  * Created by Asus on 12/24/2017.
@@ -16,7 +18,7 @@ public class OnMapFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view= inflater.inflate(R.layout.onmap_layout,container,false);
+        View view= inflater.inflate(R.layout.selected_point_info_layout,container,false);
         return view;
     }
 }

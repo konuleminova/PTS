@@ -1,4 +1,4 @@
-package photogeneia.koteoglou.olga.pts;
+package crocusoft.android.myapp.pts.ui.objects;
 
 /**
  * Created by Asus on 12/25/2017.

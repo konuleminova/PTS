@@ -1,4 +1,4 @@
-package photogeneia.koteoglou.olga.pts;
+package crocusoft.android.myapp.pts.ui.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import crocusoft.android.myapp.pts.R;
 
 import static android.content.ContentValues.TAG;
 

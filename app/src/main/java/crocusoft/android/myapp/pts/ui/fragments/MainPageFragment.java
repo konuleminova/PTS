@@ -1,4 +1,4 @@
-package photogeneia.koteoglou.olga.pts;
+package crocusoft.android.myapp.pts.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+
+import crocusoft.android.myapp.pts.R;
+import crocusoft.android.myapp.pts.ui.adapters.ItemAdapter;
+import crocusoft.android.myapp.pts.ui.objects.Item;
 
 /**
  * Created by Asus on 12/24/2017.

@@ -1,4 +1,4 @@
-package photogeneia.koteoglou.olga.pts;
+package crocusoft.android.myapp.pts;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
