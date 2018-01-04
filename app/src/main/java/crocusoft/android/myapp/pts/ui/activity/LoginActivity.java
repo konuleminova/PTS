@@ -21,53 +21,37 @@ import static android.content.ContentValues.TAG;
  */
 
 public class LoginActivity extends Activity {
-    EditText _emailText, _passwordText;
-    Button _loginButton;
+    EditText emailText, passwordText;
+    Button loginButton;
     private static final int REQUEST_SIGNUP = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loginpage_layout);
-        _emailText = (EditText) findViewById(R.id.username);
-        _passwordText = (EditText) findViewById(R.id.password);
-        _loginButton = (Button) findViewById(R.id.loginbtn);
-        _loginButton.setOnClickListener(new View.OnClickListener() {
+        emailText = (EditText) findViewById(R.id.username);
+        passwordText = (EditText) findViewById(R.id.password);
+        loginButton = (Button) findViewById(R.id.loginbtn);
+        loginButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 login();
             }
         });
-        _emailText.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorInputLayout), PorterDuff.Mode.SRC_ATOP);
     }
 
     public void login() {
-        Log.d(TAG, "Login");
-
+        loginButton.setEnabled(false);
         if (!validate()) {
             onLoginFailed();
             return;
+        } else {
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            loginButton.setEnabled(true);
         }
 
-        _loginButton.setEnabled(false);
-
-        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
-                ProgressDialog.THEME_HOLO_DARK);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Logining...");
-        progressDialog.show();
-        String email = _emailText.getText().toString();
-        String password = _passwordText.getText().toString();
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        // On complete call either onLoginSuccess or onLoginFailed
-                        onLoginSuccess();
-                        // onLoginFailed();
-                        progressDialog.dismiss();
-                    }
-                }, 3000);
     }
 
 
@@ -85,34 +69,28 @@ public class LoginActivity extends Activity {
         moveTaskToBack(true);
     }
 
-    public void onLoginSuccess() {
-        _loginButton.setEnabled(true);
-        finish();
-    }
-
     public void onLoginFailed() {
         Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_SHORT).show();
-
-        _loginButton.setEnabled(true);
+        loginButton.setEnabled(true);
     }
 
     public boolean validate() {
         boolean valid = true;
-        String email = _emailText.getText().toString();
-        String password = _passwordText.getText().toString();
+        String email = emailText.getText().toString();
+        String password = passwordText.getText().toString();
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            _emailText.setError("Please enter a valid email address");
+            emailText.setError("Please enter a valid email address");
             valid = false;
         } else {
-            _emailText.setError(null);
+            emailText.setError(null);
         }
 
         if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            _passwordText.setError("Please type between 4 and 10 alphanumeric characters");
+            passwordText.setError("Please type between 4 and 10 alphanumeric characters");
             valid = false;
         } else {
-            _passwordText.setError(null);
+            passwordText.setError(null);
         }
 
         return valid;
