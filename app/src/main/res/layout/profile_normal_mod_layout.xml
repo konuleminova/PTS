@@ -28,10 +28,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerInParent="true"
+                android:layout_marginTop="10dp"
                 android:text="MY PROFILE"
                 android:textColor="@color/colorInputLayout"
                 android:textSize="18sp"
-                android:layout_marginTop="10dp"
 
 
                 />
@@ -52,15 +52,15 @@
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/ellipsewhite"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ellipsewhite">
 
                 <ImageView
                     android:layout_width="25dp"
                     android:layout_height="25dp"
+                    android:layout_alignBottom="@+id/point_text"
                     android:layout_centerInParent="true"
                     android:background="@drawable/layer19"
-                    android:layout_alignBottom="@+id/point_text"
                     tools:ignore="NotSibling" />
             </RelativeLayout>
         </RelativeLayout>
@@ -75,196 +75,210 @@
         android:paddingRight="15dp"
         android:paddingTop="20dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="Name" />
+                android:orientation="vertical">
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/usernameWrapper"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:textColor="@color/colorInputLayout"
-                android:textColorHint="@color/colorInputLayout"
-                app:hintEnabled="false"
-
-                >
-
-
-                <EditText
-                    android:id="@+id/username"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Username"
-                    android:inputType="text"
-                    android:textColor="@color/colorRed"
+                    android:orientation="vertical">
 
-                    />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="Name" />
 
-            </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/usernameWrapper"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorRed"
+                        android:textColorHint="@color/colorRed"
+                        android:theme="@style/TextLabelRed"
+                        app:hintEnabled="false">
 
-        </LinearLayout>
+                        <EditText
+                            android:id="@+id/username"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Mamed"
+                            android:inputType="textEmailAddress"
+                            android:paddingBottom="20dp"
+                            android:textColor="@color/colorRed"
+                            android:textColorHint="@color/colorRed" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+                    </android.support.design.widget.TextInputLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="Surname" />
+                </LinearLayout>
 
-            <android.support.design.widget.TextInputLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:textColor="@color/colorInputLayout"
-                android:textColorHint="@color/colorInputLayout"
-                app:hintEnabled="false">
-
-
-                <EditText
-
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Username"
-                    android:inputType="text"
 
-                    />
+                    android:orientation="vertical">
 
-            </android.support.design.widget.TextInputLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="Surname" />
 
-        </LinearLayout>
+                    <android.support.design.widget.TextInputLayout
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="Email" />
-
-            <android.support.design.widget.TextInputLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:textColor="@color/colorInputLayout"
-                android:textColorHint="@color/colorInputLayout"
-                app:hintEnabled="false">
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:textColor="@color/colorRed"
+                        android:textColorHint="@color/colorRed"
+                        android:theme="@style/TextLabelRed"
+                        app:hintEnabled="false">
 
 
-                <EditText
+                        <EditText
 
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Mamedov"
+                            android:inputType="text"
+                            android:paddingBottom="20dp"
+                            android:textColor="@color/colorRed"
+                            android:textColorHint="@color/colorRed" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Username"
-                    android:inputType="textEmailAddress"
+
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="Email" />
+
+                    <android.support.design.widget.TextInputLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:textColor="@color/colorRed"
+                        android:textColorHint="@color/colorRed"
+                        android:theme="@style/TextLabelRed"
+                        app:hintEnabled="false">
 
 
-                    />
+                        <EditText
 
-            </android.support.design.widget.TextInputLayout>
-        </LinearLayout>
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="mmammadov@gmail.com"
+                            android:inputType="textVisiblePassword"
+                            android:paddingBottom="20dp"
+                            android:textColor="@color/colorRed"
+                            android:textColorHint="@color/colorRed"
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+                            />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="Phone Number" />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
 
-            <android.support.design.widget.TextInputLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:textColor="@color/colorInputLayout"
-                android:textColorHint="@color/colorInputLayout"
-                app:hintEnabled="false">
-
-
-                <EditText
-
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Username"
-                    android:inputType="phone"
+
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="Phone Number" />
+
+                    <android.support.design.widget.TextInputLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:textColor="@color/colorRed"
+                        android:textColorHint="@color/colorRed"
+                        android:theme="@style/TextLabelRed"
+                        app:hintEnabled="false">
 
 
-                    />
+                        <EditText
 
-            </android.support.design.widget.TextInputLayout>
-        </LinearLayout>
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="+99455xxxx"
+                            android:inputType="phone"
+                            android:paddingBottom="20dp"
+                            android:textColor="@color/colorRed"
+                            android:textColorHint="@color/colorRed"
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+                            />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="Password"
-                android:id="@+id/label_password"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
 
-
-
-
-            <android.support.design.widget.TextInputLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginBottom="15dp"
-                android:textColor="@color/colorInputLayout"
-                android:textColorHint="@color/colorInputLayout"
-                app:hintEnabled="false">
-
-
-                <EditText
-
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Username"
-                    android:inputType="textPassword"
-                    android:id="@+id/txtpassword"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/label_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="Password" />
 
 
-                    />
+                    <android.support.design.widget.TextInputLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="15dp"
+                        android:textColor="@color/colorRed"
+                        android:textColorHint="@color/colorRed"
+                        android:theme="@style/TextLabelRed"
+                        app:hintEnabled="false">
 
 
-            </android.support.design.widget.TextInputLayout>
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/layer19"
-                android:layout_alignTop="@+id/label_password"/>
+                        <EditText
 
-        </RelativeLayout>
+                            android:id="@+id/txtpassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="******"
+                            android:inputType="textPassword"
+                            android:paddingBottom="20dp"
+                            android:textColor="@color/colorRed"
+                            android:textColorHint="@color/colorRed" />
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignTop="@+id/label_password"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/layer19" />
+
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 </LinearLayout>
