@@ -1,5 +1,6 @@
 package crocusoft.android.myapp.pts.ui.activity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentManager;
@@ -39,6 +40,8 @@ RelativeLayout mainpage,onmap,profile;
             public void onClick(View view) {
 
                 setFragment(1,null);
+               //Intent i = new Intent(MainActivity.this, MapsActivity.class);
+                //startActivity(i);
             }
         });
         profile.setOnClickListener(new View.OnClickListener() {

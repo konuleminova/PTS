@@ -3,4 +3,5 @@
     <string name="name">PTS-175</string>
     <string name="loaction"> Topaz Khatai</string>
     <string name="time">10.12.2017-12:34</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
