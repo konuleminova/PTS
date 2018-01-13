@@ -19,6 +19,7 @@ import crocusoft.android.myapp.pts.network.requests.ForgotPasswordRequestClass;
 import crocusoft.android.myapp.pts.network.requests.LoginRequestClass;
 import crocusoft.android.myapp.pts.network.responses.ForgotPassResponseClass;
 import crocusoft.android.myapp.pts.network.responses.LoginResponseClass;
+import crocusoft.android.myapp.pts.ui.objects.ViewDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -59,6 +60,8 @@ public class LoginActivity extends Activity {
                 forgotPassEditText.setVisibility(View.VISIBLE);
                 forgotPassTextView.setText("Send");
                 //sendForogotPassData();
+               // ViewDialog alert = new ViewDialog();
+                //alert.showDialog(LoginActivity.this,"Alert Dialog ");
 
             }
         });
