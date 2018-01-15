@@ -5,8 +5,14 @@
     android:layout_height="wrap_content"
     card_view:cardCornerRadius="6dp"
     card_view:cardElevation="3dp"
-    card_view:cardUseCompatPadding="true">
+    card_view:cardUseCompatPadding="true"
+    android:layout_marginBottom="4dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginLeft="8dp"
+    >
     <RelativeLayout
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="20dp">
@@ -14,32 +20,38 @@
             android:id="@+id/imgName"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:background="@drawable/location_round_icon"
+            android:src="@drawable/sharp_round_icon"
             android:layout_marginBottom="10dp"
             android:layout_marginRight="20dp"/>
         <TextView
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"
+            android:layout_marginTop="3dp"
             android:id="@+id/Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="PTS-175"
-           android:layout_toRightOf="@+id/imgName"
-            android:textSize="20sp"
+            android:layout_toRightOf="@+id/imgName"
+            android:textSize="17sp"
             />
         <ImageView
             android:id="@+id/imgLocation"
             android:layout_below="@+id/imgName"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:background="@drawable/location_round_icon"
+            android:src="@drawable/location_round_icon"
             android:layout_marginBottom="10dp"
             android:layout_marginRight="20dp"/>
         <TextView
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"
+            android:layout_marginTop="3dp"
             android:id="@+id/loaction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Topaz Khatai"
             android:layout_toRightOf="@+id/imgLocation"
-            android:textSize="20sp"
+            android:textSize="17sp"
             android:layout_below="@+id/imgName"
             />
         <ImageView
@@ -47,18 +59,21 @@
             android:layout_below="@+id/imgLocation"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:background="@drawable/location_round_icon"/>
+            android:src="@drawable/date_time_icon"/>
         <TextView
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"
+            android:layout_marginTop="3dp"
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="10.12.2017-12:34"
             android:layout_toRightOf="@+id/imgLocation"
-            android:textSize="20sp"
+            android:textSize="17sp"
             android:layout_below="@+id/imgLocation"
             />
         <ImageView
-            android:layout_width="20dp"
+            android:layout_width="12dp"
             android:layout_height="20dp"
             android:background="@drawable/arrow_point_to_right"
             android:layout_alignParentRight="true"

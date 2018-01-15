@@ -36,10 +36,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         holder.txtLocation.setText(persons.get(position).getLocation());
         holder.txtTime.setText(persons.get(position).getTime());
 
-        holder.imgName.setImageResource(persons.get(position).getNameImg());
-        holder.imgLOaction.setImageResource(persons.get(position).getNameImg());
-        holder.imgTime.setImageResource(persons.get(position).getNameImg());
-        holder.nextbtn.setImageResource(persons.get(position).getNextbtn());
+//        holder.imgName.setImageResource(persons.get(position).getNameImg());
+//        holder.imgLOaction.setImageResource(persons.get(position).getNameImg());
+//        holder.imgTime.setImageResource(persons.get(position).getNameImg());
+//        holder.nextbtn.setImageResource(persons.get(position).getNextbtn());
 
     }
 

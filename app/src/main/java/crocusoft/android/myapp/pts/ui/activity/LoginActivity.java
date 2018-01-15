@@ -49,7 +49,7 @@ public class LoginActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                login();
+               // login();
                 sendData();
 
             }
@@ -77,7 +77,6 @@ public class LoginActivity extends Activity {
         apiInterface.sendMessage(requestClass).enqueue(new Callback<LoginResponseClass>() {
             @Override
             public void onResponse(Call<LoginResponseClass> call, Response<LoginResponseClass> response) {
-
 
                 if (response.body().getCompany() != null) {
                     Log.e("message", response.body().getMessage().getMessage());

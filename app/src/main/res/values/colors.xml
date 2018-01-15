@@ -5,4 +5,5 @@
     <color name="colorAccent">#FFFF</color>
     <color name="colorRed">#FA4054</color>
     <color name="colorInputLayout">#ffffff</color>
+    <color name="colorBlack">#4a4749</color>
 </resources>
