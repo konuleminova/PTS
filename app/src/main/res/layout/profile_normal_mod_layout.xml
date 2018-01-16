@@ -48,21 +48,13 @@
                 android:textColor="@color/colorInputLayout"
                 android:textSize="19sp" />
 
-            <RelativeLayout
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/ellipsewhite">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@+id/point_text"
+                android:background="@drawable/bookicon"
+                android:layout_alignParentRight="true"/>
 
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_alignBottom="@+id/point_text"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/layer19"
-                    tools:ignore="NotSibling" />
-            </RelativeLayout>
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
@@ -76,59 +68,62 @@
         android:paddingTop="20dp">
 
         <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <LinearLayout
+                android:id="@+id/text_containerLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:text="Name" />
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/editicon" />
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/usernameWrapper"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorRed"
-                        android:textColorHint="@color/colorRed"
-                        android:theme="@style/TextLabelRed"
-                        app:hintEnabled="false">
+                        android:textColorHint="@color/colorGrey"
+                        android:theme="@style/TextLabelRed">
 
                         <EditText
                             android:id="@+id/username"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Mamed"
+                            android:hint="Name"
                             android:inputType="textEmailAddress"
                             android:paddingBottom="20dp"
                             android:textColor="@color/colorRed"
-                            android:textColorHint="@color/colorRed" />
+                            android:textColorHint="@color/colorGrey" />
+
 
                     </android.support.design.widget.TextInputLayout>
 
-                </LinearLayout>
+                </RelativeLayout>
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:text="Surname" />
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/editicon" />
 
                     <android.support.design.widget.TextInputLayout
 
@@ -136,16 +131,16 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="15dp"
                         android:textColor="@color/colorRed"
-                        android:textColorHint="@color/colorRed"
-                        android:theme="@style/TextLabelRed"
-                        app:hintEnabled="false">
+                        android:textColorHint="@color/colorGrey"
+                        android:theme="@style/TextLabelRed">
 
 
                         <EditText
 
+                            android:id="@+id/surnameEdittext"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Mamedov"
+                            android:hint="Surname"
                             android:inputType="text"
                             android:paddingBottom="20dp"
                             android:textColor="@color/colorRed"
@@ -153,19 +148,21 @@
 
                     </android.support.design.widget.TextInputLayout>
 
-                </LinearLayout>
+                </RelativeLayout>
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:text="Email" />
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/editicon" />
 
                     <android.support.design.widget.TextInputLayout
 
@@ -173,16 +170,16 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="15dp"
                         android:textColor="@color/colorRed"
-                        android:textColorHint="@color/colorRed"
-                        android:theme="@style/TextLabelRed"
-                        app:hintEnabled="false">
+                        android:textColorHint="@color/colorGrey"
+                        android:theme="@style/TextLabelRed">
 
 
                         <EditText
 
+                            android:id="@+id/emailEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="mmammadov@gmail.com"
+                            android:hint="Email"
                             android:inputType="textVisiblePassword"
                             android:paddingBottom="20dp"
                             android:textColor="@color/colorRed"
@@ -191,19 +188,21 @@
                             />
 
                     </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
+                </RelativeLayout>
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:text="Phone Number" />
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/editicon" />
 
                     <android.support.design.widget.TextInputLayout
 
@@ -211,16 +210,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="15dp"
                         android:textColor="@color/colorRed"
-                        android:textColorHint="@color/colorRed"
-                        android:theme="@style/TextLabelRed"
-                        app:hintEnabled="false">
+                        android:textColorHint="@color/colorGrey"
+                        android:theme="@style/TextLabelRed">
 
 
                         <EditText
 
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="+99455xxxx"
+                            android:hint="Phone Number"
                             android:inputType="phone"
                             android:paddingBottom="20dp"
                             android:textColor="@color/colorRed"
@@ -229,18 +227,11 @@
                             />
 
                     </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
+                </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/label_password"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:text="Password" />
 
 
                     <android.support.design.widget.TextInputLayout
@@ -250,9 +241,8 @@
                         android:layout_centerVertical="true"
                         android:layout_marginBottom="15dp"
                         android:textColor="@color/colorRed"
-                        android:textColorHint="@color/colorRed"
-                        android:theme="@style/TextLabelRed"
-                        app:hintEnabled="false">
+                        android:textColorHint="@color/colorGrey"
+                        android:theme="@style/TextLabelRed">
 
 
                         <EditText
@@ -260,8 +250,8 @@
                             android:id="@+id/txtpassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="******"
-                            android:inputType="textPassword"
+                            android:hint="Password"
+                            android:inputType="textVisiblePassword"
                             android:paddingBottom="20dp"
                             android:textColor="@color/colorRed"
                             android:textColorHint="@color/colorRed" />
@@ -272,10 +262,10 @@
                     <ImageView
                         android:layout_width="25dp"
                         android:layout_height="25dp"
+                        android:background="@drawable/editicon"
                         android:layout_alignParentRight="true"
-                        android:layout_alignTop="@+id/label_password"
                         android:layout_marginRight="20dp"
-                        android:background="@drawable/layer19" />
+                        android:layout_centerInParent="true"/>
 
                 </RelativeLayout>
             </LinearLayout>

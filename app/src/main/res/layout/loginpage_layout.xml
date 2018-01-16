@@ -5,151 +5,160 @@
     android:layout_height="match_parent"
     android:background="@drawable/back_photo_pts">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginTop="25dp">
-
-        <ImageView
-            android:id="@+id/icon_launch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/rsz_launcicon_pst" />
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView">
 
         <RelativeLayout
-            android:id="@+id/maincontent"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/icon_launch"
-            android:layout_marginTop="20dp"
-            android:padding="20dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Login"
-                android:textColor="@color/colorInputLayout" />
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/usernameWrapper"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:textColor="@color/colorInputLayout"
-                android:textColorHint="@color/colorInputLayout"
-                app:hintEnabled="false"
-                android:theme="@style/TextLabel"
-               >
-
-                <EditText
-                    android:id="@+id/username"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Username"
-                    android:inputType="textEmailAddress"
-                    android:textColorHint="@color/colorInputLayout"
-                    android:textColor="@color/colorInputLayout"/>
-
-            </android.support.design.widget.TextInputLayout>
-
-            <TextView
-                android:id="@+id/label_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/usernameWrapper"
-                android:layout_marginTop="20dp"
-                android:text="Password"
-                android:textColor="@color/colorInputLayout" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="25dp">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignBottom="@+id/passwordWrapper"
-                android:background="@drawable/seenicon"
-                android:layout_alignParentRight="true"
-                android:layout_marginBottom="20dp"
-                android:layout_marginRight="10dp"/>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/passwordWrapper"
-                android:layout_width="match_parent"
+                android:id="@+id/icon_launch"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/label_password"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/colorInputLayout"
-                android:textColorHint="@color/colorInputLayout"
-                app:hintEnabled="false"
-                android:theme="@style/TextLabel">
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/rsz_launcicon_pst" />
 
-                <EditText
-                    android:id="@+id/password"
+
+            <RelativeLayout
+                android:id="@+id/maincontent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/icon_launch"
+                android:layout_marginTop="20dp"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Login"
+                    android:textColor="@color/colorInputLayout" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/usernameWrapper"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Password"
-                    android:inputType="textPassword"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/colorInputLayout"
                     android:textColorHint="@color/colorInputLayout"
-                    android:textColor="@color/colorInputLayout"/>
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false">
+
+                    <EditText
+                        android:id="@+id/username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Username"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/colorInputLayout"
+                        android:textColorHint="@color/colorInputLayout" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/label_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/usernameWrapper"
+                    android:layout_marginTop="20dp"
+                    android:text="Password"
+                    android:textColor="@color/colorInputLayout" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignBottom="@+id/passwordWrapper"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/seenicon" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/passwordWrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/label_password"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/colorInputLayout"
+                    android:textColorHint="@color/colorInputLayout"
+                    android:theme="@style/TextLabel"
+                    app:hintEnabled="false">
+
+                    <EditText
+                        android:id="@+id/password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:textColor="@color/colorInputLayout"
+                        android:textColorHint="@color/colorInputLayout"
+                        android:clickable="true"
+                        android:focusableInTouchMode="true" />
 
 
-            </android.support.design.widget.TextInputLayout>
+                </android.support.design.widget.TextInputLayout>
 
-            <Button
-                android:id="@+id/loginbtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/passwordWrapper"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/loginbtn"
-                android:text="LOGIN" />
-        </RelativeLayout>
+                <Button
+                    android:id="@+id/loginbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/passwordWrapper"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/loginbtn"
+                    android:text="LOGIN" />
+            </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/toastmail"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_below="@+id/maincontent"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="20dp"
 
-           >
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <RelativeLayout
+                android:id="@+id/toastmail"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/maincontent"
                 android:layout_centerInParent="true"
-               android:hint="edit text"
-                android:gravity="center"
-                android:background="@drawable/toastrectangle"
-                android:id="@+id/forgot_password_edittext"
-                android:visibility="gone"/>
+                android:layout_marginTop="20dp"
 
-        </RelativeLayout>
+                >
 
-        <RelativeLayout
-            android:layout_width="150dp"
-            android:layout_height="32dp"
-            android:layout_below="@+id/toastmail"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/custom_background"
-            android:id="@+id/forgotPass_button_layout"
+                <EditText
+                    android:id="@+id/forgot_password_edittext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/toastrectangle"
+                    android:gravity="center"
+                    android:hint="edit text"
+                    android:visibility="gone" />
 
-            >
+            </RelativeLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+
+            <RelativeLayout
+                android:id="@+id/forgotPass_button_layout"
+                android:layout_width="150dp"
+                android:layout_height="32dp"
+                android:layout_below="@+id/toastmail"
                 android:layout_centerInParent="true"
-                android:text="Forgot Password ?"
-                android:textColor="@color/colorInputLayout"
-                android:id="@+id/textview_forgotpass"
-               />
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_background"
+
+                >
+
+                <TextView
+                    android:id="@+id/textview_forgotpass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Forgot Password ?"
+                    android:textColor="@color/colorInputLayout" />
+
+            </RelativeLayout>
 
         </RelativeLayout>
-
-    </RelativeLayout>
+    </ScrollView>
 
 
 </RelativeLayout>

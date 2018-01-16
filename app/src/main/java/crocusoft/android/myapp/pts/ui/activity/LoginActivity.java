@@ -1,14 +1,18 @@
 package crocusoft.android.myapp.pts.ui.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,13 +47,15 @@ public class LoginActivity extends Activity {
         passwordText = (EditText) findViewById(R.id.password);
         forgotPassEditText = (EditText) findViewById(R.id.forgot_password_edittext);
         forgotPassLayout = (RelativeLayout) findViewById(R.id.forgotPass_button_layout);
+
         forgotPassTextView = (TextView) findViewById(R.id.textview_forgotpass);
+
         loginButton = (Button) findViewById(R.id.loginbtn);
         loginButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-               // login();
+                // login();
                 sendData();
 
             }
@@ -60,7 +66,7 @@ public class LoginActivity extends Activity {
                 forgotPassEditText.setVisibility(View.VISIBLE);
                 forgotPassTextView.setText("Send");
                 //sendForogotPassData();
-               // ViewDialog alert = new ViewDialog();
+                // ViewDialog alert = new ViewDialog();
                 //alert.showDialog(LoginActivity.this,"Alert Dialog ");
 
             }
@@ -81,9 +87,8 @@ public class LoginActivity extends Activity {
                 if (response.body().getCompany() != null) {
                     Log.e("message", response.body().getMessage().getMessage());
                     Toast.makeText(LoginActivity.this, response.body().getMessage().getMessage(), Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
-
 
 
                 } else {
@@ -182,5 +187,11 @@ public class LoginActivity extends Activity {
         }
 
         return valid;
+    }
+
+    private void hideKeyboard(View view) {
+        final InputMethodManager imm = (InputMethodManager) getSystemService(
+                Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

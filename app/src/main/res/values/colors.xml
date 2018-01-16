@@ -6,4 +6,6 @@
     <color name="colorRed">#FA4054</color>
     <color name="colorInputLayout">#ffffff</color>
     <color name="colorBlack">#4a4749</color>
+    <color name="colorGrey"> #2C3E50</color>
+
 </resources>

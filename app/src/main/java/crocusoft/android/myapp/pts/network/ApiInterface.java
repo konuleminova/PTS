@@ -1,9 +1,11 @@
 package crocusoft.android.myapp.pts.network;
 
 import crocusoft.android.myapp.pts.network.requests.ForgotPasswordRequestClass;
+import crocusoft.android.myapp.pts.network.requests.GetTemplateRequest;
 import crocusoft.android.myapp.pts.network.requests.LoginRequestClass;
 import crocusoft.android.myapp.pts.network.responses.ForgotPassResponseClass;
 import crocusoft.android.myapp.pts.network.responses.LoginResponseClass;
+import crocusoft.android.myapp.pts.network.responses.getTemplateResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Headers;
@@ -20,6 +22,8 @@ public interface ApiInterface {
     })
     @POST("login")
     Call<LoginResponseClass> sendMessage(@Body LoginRequestClass requestClass);
+
+    //Forgot Password API
     @Headers({
             "ptsheader: {\"transactionId\":123456789,\"apiKey\":\"dsakDH6436824HQKE\",\"os\":\"IOS\",\"appVersion\":\"1.0.0\" }",
             "Content-Type: application/json"
@@ -27,4 +31,11 @@ public interface ApiInterface {
     @POST("forgetPassword")
     Call<ForgotPassResponseClass> sendMessage(@Body ForgotPasswordRequestClass requestClass);
 
+    //getTemplate API
+    @Headers({
+            "ptsheader: {\"transactionId\":123456789,\"apiKey\":\"dsakDH6436824HQKE\",\"os\":\"IOS\",\"appVersion\":\"1.0.0\" }",
+            "Content-Type: application/json"
+    })
+    @POST("getTemplate")
+    Call<getTemplateResponse> sendMessage(@Body GetTemplateRequest getTemplateRequest);
 }
