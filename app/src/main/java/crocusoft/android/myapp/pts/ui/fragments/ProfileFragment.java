@@ -20,8 +20,7 @@ import crocusoft.android.myapp.pts.ui.objects.ViewDialog;
  */
 
 public class ProfileFragment extends Fragment {
-    EditText usernameEditText, emilEditext;
-    LinearLayout t;
+    Button nameBtn, snameBtn, emailBtn, phoneBtn, passBtn;
 
     @Nullable
     @Override
@@ -29,33 +28,53 @@ public class ProfileFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.profile_normal_mod_layout, container, false);
         final View views = getActivity().findViewById(R.id.design_bottom_sheet);
-        t = (LinearLayout) view.findViewById(R.id.text_containerLayout);
-
-        final ScrollView scrollView = (ScrollView) view.findViewById(R.id.scrollView);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_MASK_ADJUST);
-        usernameEditText = (EditText) view.findViewById(R.id.surnameEdittext);
-        usernameEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    // your action here
-
-
-                    //scrollView.fullScroll(ScrollView.FOCUS_UP);
-
-
-                }
-            }
-        });
-        Button imageView=(Button) view.findViewById(R.id.name_editBtn);
-        imageView.setOnClickListener(new View.OnClickListener() {
+        nameBtn = (Button) view.findViewById(R.id.name_editBtn);
+        nameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ViewDialog alert = new ViewDialog();
-                alert.showDialog(getActivity(),"Alert Dialog ");
+                alert.showDialog(getActivity(), 0);
 
             }
         });
+       snameBtn = (Button) view.findViewById(R.id.sname_editBtn);
+       snameBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ViewDialog alert = new ViewDialog();
+                alert.showDialog(getActivity(), 1);
+
+            }
+        });
+        emailBtn = (Button) view.findViewById(R.id.email_editBtn);
+        emailBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ViewDialog alert = new ViewDialog();
+                alert.showDialog(getActivity(), 2);
+
+            }
+        });
+        phoneBtn = (Button) view.findViewById(R.id.phone_ediBtn);
+       phoneBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ViewDialog alert = new ViewDialog();
+                alert.showDialog(getActivity(), 3);
+
+            }
+        });
+        passBtn = (Button) view.findViewById(R.id.pass_editBtn);
+        passBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ViewDialog alert = new ViewDialog();
+                alert.showDialog(getActivity(), 4);
+
+            }
+        });
+
 
 
         return view;

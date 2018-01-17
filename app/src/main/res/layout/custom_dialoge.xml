@@ -1,61 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="330dp"
-    android:layout_height="340dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_gravity="center">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="20dp">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Old Password"
-        android:textStyle="bold"
-       />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/dialoge_alert_oldPass_text"
-        android:theme="@style/TextLabelRed"
-        android:textColor="@color/colorRed"
-        android:textColorHint="@color/colorRed"
-    />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Password"
-        android:textStyle="bold"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/dialoge_alert_newwPass_text"
-        android:theme="@style/TextLabelRed"
-        android:textColor="@color/colorRed"
-        android:textColorHint="@color/colorRed"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Confirm Password"
-        android:textStyle="bold"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/dialoge_alert_confirmPass_text"
-        android:theme="@style/TextLabelRed"
-        android:textColor="@color/colorRed"
-        android:textColorHint="@color/colorRed"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SAVE"
-        android:layout_marginTop="30dp"
-        android:id="@+id/btn_dialog_save"
-        android:background="@drawable/dialogsavebtn"
-        android:textColor="@color/colorInputLayout"/>
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Old Password"
+            app:hintTextAppearance="@style/TextLabelRed"
+            android:id="@+id/dialoge_alert_oldPass_text">
+
+            <EditText
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorRed"
+                android:textColorHint="@color/colorRed"
+                android:theme="@style/TextLabelRed"
+              android:id="@+id/oldPass_Edittext"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="New Password"
+            app:hintTextAppearance="@style/TextLabelRed"
+            android:id="@+id/dialoge_alert_newPass_text">
+
+            <EditText
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorRed"
+                android:textColorHint="@color/colorRed"
+                android:theme="@style/TextLabelRed"
+                android:id="@+id/newPass_editText"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Confirm Password"
+            app:hintTextAppearance="@style/TextLabelRed"
+            android:id="@+id/dialoge_alert_confirmPass_text">
+
+            <EditText
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorRed"
+                android:textColorHint="@color/colorRed"
+                android:theme="@style/TextLabelRed"
+                android:id="@+id/confirmPass_editText"/>
+        </android.support.design.widget.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/btn_dialog_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/dialogsavebtn"
+            android:text="SAVE"
+            android:textColor="@color/colorInputLayout" />
     </LinearLayout>
 
 </LinearLayout>

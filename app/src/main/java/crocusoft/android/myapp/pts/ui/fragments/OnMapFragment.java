@@ -48,7 +48,7 @@ public class OnMapFragment extends Fragment implements OnMapReadyCallback, Googl
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.selected_point_location_layout, container, false);
+        View view = inflater.inflate(R.layout.onmap_layout, container, false);
         mMapView = (MapView) view.findViewById(R.id.mapview);
         mMapView.onCreate(savedInstanceState);
         mMapView.getMapAsync(this); //this is important

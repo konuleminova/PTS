@@ -48,12 +48,12 @@
                 android:textColor="@color/colorInputLayout"
                 android:textSize="19sp" />
 
-            <ImageView
+            <Button
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignBottom="@+id/point_text"
-                android:background="@drawable/bookicon"
-                android:layout_alignParentRight="true"/>
+                android:layout_alignParentRight="true"
+                android:background="@drawable/bookicon" />
 
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
@@ -83,30 +83,41 @@
                     android:layout_height="wrap_content">
 
                     <Button
+                        android:id="@+id/name_editBtn"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerInParent="true"
                         android:layout_marginRight="20dp"
                         android:background="@drawable/editicon"
-                        android:id="@+id/name_editBtn"
 
                         />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Name" />
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/usernameWrapper"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:textColorHint="@color/colorGrey"
-                        android:theme="@style/TextLabelRed">
+                        android:theme="@style/TextLabelRed"
+                        app:hintEnabled="false">
 
                         <EditText
                             android:id="@+id/username"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Name"
+                            android:clickable="false"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
                             android:inputType="textEmailAddress"
                             android:paddingBottom="20dp"
+                            android:text="Mamed"
                             android:textColor="@color/colorRed"
                             android:textColorHint="@color/colorGrey" />
 
@@ -121,23 +132,29 @@
                     android:orientation="vertical">
 
                     <Button
+                        android:id="@+id/sname_editBtn"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerInParent="true"
                         android:layout_marginRight="20dp"
-                        android:background="@drawable/editicon"
-                        android:id="@+id/sname_editBtn"
-                       />
+                        android:background="@drawable/editicon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Surname" />
 
                     <android.support.design.widget.TextInputLayout
 
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="15dp"
+                        android:layout_marginTop="10dp"
                         android:textColor="@color/colorRed"
                         android:textColorHint="@color/colorGrey"
-                        android:theme="@style/TextLabelRed">
+                        android:theme="@style/TextLabelRed"
+                        app:hintEnabled="false">
 
 
                         <EditText
@@ -145,6 +162,10 @@
                             android:id="@+id/surnameEdittext"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:clickable="false"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
                             android:hint="Surname"
                             android:inputType="text"
                             android:paddingBottom="20dp"
@@ -162,22 +183,29 @@
                     android:orientation="vertical">
 
                     <Button
+                        android:id="@+id/email_editBtn"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerInParent="true"
                         android:layout_marginRight="20dp"
-                        android:background="@drawable/editicon"
-                        android:id="email_editBtn"/>
+                        android:background="@drawable/editicon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Email" />
 
                     <android.support.design.widget.TextInputLayout
 
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="15dp"
+                        android:layout_marginTop="10dp"
                         android:textColor="@color/colorRed"
                         android:textColorHint="@color/colorGrey"
-                        android:theme="@style/TextLabelRed">
+                        android:theme="@style/TextLabelRed"
+                        app:hintEnabled="false">
 
 
                         <EditText
@@ -185,6 +213,10 @@
                             android:id="@+id/emailEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:clickable="false"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
                             android:hint="Email"
                             android:inputType="textVisiblePassword"
                             android:paddingBottom="20dp"
@@ -203,28 +235,39 @@
                     android:orientation="vertical">
 
                     <Button
+                        android:id="@+id/phone_ediBtn"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerInParent="true"
                         android:layout_marginRight="20dp"
-                        android:background="@drawable/editicon"
-                        android:id="@+id/phone_ediBtn"/>
+                        android:background="@drawable/editicon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Phone Number" />
 
                     <android.support.design.widget.TextInputLayout
 
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="15dp"
+                        android:layout_marginTop="10dp"
                         android:textColor="@color/colorRed"
                         android:textColorHint="@color/colorGrey"
-                        android:theme="@style/TextLabelRed">
+                        android:theme="@style/TextLabelRed"
+                        app:hintEnabled="false">
 
 
                         <EditText
 
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:clickable="false"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
                             android:hint="Phone Number"
                             android:inputType="phone"
                             android:paddingBottom="20dp"
@@ -240,6 +283,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Password" />
 
                     <android.support.design.widget.TextInputLayout
 
@@ -247,9 +294,11 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginBottom="15dp"
+                        android:layout_marginTop="10dp"
                         android:textColor="@color/colorRed"
                         android:textColorHint="@color/colorGrey"
-                        android:theme="@style/TextLabelRed">
+                        android:theme="@style/TextLabelRed"
+                        app:hintEnabled="false">
 
 
                         <EditText
@@ -257,6 +306,10 @@
                             android:id="@+id/txtpassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:clickable="false"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
                             android:hint="Password"
                             android:inputType="textVisiblePassword"
                             android:paddingBottom="20dp"
@@ -267,13 +320,13 @@
                     </android.support.design.widget.TextInputLayout>
 
                     <Button
+                        android:id="@+id/pass_editBtn"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:background="@drawable/editicon"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="20dp"
                         android:layout_centerInParent="true"
-                        android:id="@+id/pass_editBtn"/>
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/editicon" />
 
                 </RelativeLayout>
             </LinearLayout>
