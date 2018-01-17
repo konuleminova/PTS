@@ -23,7 +23,6 @@ public class ViewDialog {
     TextInputLayout oldPassEdittext_tv, newPassEdittext_tv, confirmPassEdittext_tv;
     EditText oldPassEdittext_et, newPassEdittext_et, confirmPassEdittext_et;
 
-
     public void showDialog(Activity activity, int id) {
 
         final Dialog dialog = new Dialog(activity);
@@ -70,7 +69,6 @@ public class ViewDialog {
             newPassEdittext_tv.setVisibility(View.GONE);
             confirmPassEdittext_tv.setVisibility(View.GONE);
             oldPassEdittext_tv.setHint("Phone Number");
-            oldPassEdittext_tv.setHint("Password");
             oldPassEdittext_et.setInputType(InputType.TYPE_CLASS_PHONE);
         } else if (id == 4) {
             oldPassEdittext_tv.setHint("Password");

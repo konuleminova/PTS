@@ -4,7 +4,7 @@ package crocusoft.android.myapp.pts.network.responses;
  * Created by Asus on 1/16/2018.
  */
 
-class ArrayItems {
+public class ArrayItems {
     String id;
     String dependedId;
     String value;

@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
+import android.text.InputType;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -29,8 +31,10 @@ import crocusoft.android.myapp.pts.R;
 import crocusoft.android.myapp.pts.network.ApiClient;
 import crocusoft.android.myapp.pts.network.ApiInterface;
 import crocusoft.android.myapp.pts.network.requests.GetTemplateRequest;
+import crocusoft.android.myapp.pts.network.responses.ArrayItems;
 import crocusoft.android.myapp.pts.network.responses.FormInputs;
 import crocusoft.android.myapp.pts.network.responses.getTemplateResponse;
+import crocusoft.android.myapp.pts.ui.fragments.MainPageFragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -60,10 +64,8 @@ public class AddItemActivity extends Activity {
 
             @Override
             public void onResponse(Call<getTemplateResponse> call, Response<getTemplateResponse> response) {
-                //Toast.makeText(getActivity(), response.body().getTemplate().), Toast.LENGTH_LONG).show();
                 if (response.body().getMessage().getId().equals("1000")) {
                     FormInputs[] formInputs = response.body().getTemplate().getFormInputs();
-
                     for (int i = 0; i < formInputs.length; i++) {
                         Log.e("template", formInputs[i].toString());
                         fillView(formInputs[i]);
@@ -86,13 +88,23 @@ public class AddItemActivity extends Activity {
 
 
     private void fillView(FormInputs formInputs) {
+        String s = formInputs.getPlaceholder();
         switch (formInputs.getTypeName()) {
             case "TEXT":
-                addEditTextIntoVIew(formInputs);
-                // addCheckBox();
+
+                addTextInputLayout(0, s);
+                break;
+            case "NUMBER":
+                addTextInputLayout(1, s);
+                break;
+            case "DECIMAL":
+                addTextInputLayout(2, s);
+                break;
+            case "PHONE":
+                addTextInputLayout(3, s);
                 break;
             case "CHECKBOX":
-                addCheckBox();
+                addCheckBox(formInputs);
                 break;
             case "RADIOBUTTON":
                 addradioButton();
@@ -114,7 +126,7 @@ public class AddItemActivity extends Activity {
         LinearLayout linearlayout = new LinearLayout(this);
         linearlayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         linearlayout.setOrientation(LinearLayout.VERTICAL);
-       linearlayout.setGravity(Gravity.CENTER);
+        linearlayout.setGravity(Gravity.CENTER);
         ImageView i = new ImageView(this);
         i.setImageDrawable(getResources().getDrawable(R.drawable.images));
         i.setTranslationY(10);
@@ -177,43 +189,57 @@ public class AddItemActivity extends Activity {
         parentLinearLayout.addView(rg);//you add the whole RadioGroup to the layout
     }
 
-    private void addCheckBox() {
+    private void addCheckBox(FormInputs formInputs) {
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < formInputs.getArrayItems().length; i++) {
             CheckBox cb = new CheckBox(this);
-            cb.setText("Dynamic Checkbox " + i);
+            ArrayItems[] arrayItems = formInputs.getArrayItems();
+            cb.setText(arrayItems[i].getValue());
             cb.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             cb.setId(i);
-          cb.setTextColor(getResources().getColor(R.color.colorRed));
+            cb.setTextColor(getResources().getColor(R.color.colorRed));
             parentLinearLayout.addView(cb);
 
         }
 
     }
 
-    private void addEditTextIntoVIew(FormInputs formInputs) {
+    void addTextInputLayout(int id, String s) {
         super.setTheme(R.style.TextLabelRed);
-        // add edittext
-        EditText et = new EditText(this);
-        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        et.setLayoutParams(p);
-        et.setHintTextColor(Color.RED);
-        et.setHintTextColor(getResources().getColor(android.R.color.holo_red_dark));
-        // Set the font size of the text that the user will enter
-        et.setTextSize(16);
-        // Set the color of the text inside the EditText field
-       et.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
-        //et.setText("Text");
-        //et.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_dark));
-        et.setHint("Text");
-        et.setHighlightColor(getResources().getColor(android.R.color.holo_blue_dark));
-        et.setHighlightColor(getResources().getColor(android.R.color.holo_red_dark));
+        EditText editText = new EditText(this);
+        editText.setTextColor(getResources().getColor(R.color.colorRed));
+        editText.setHintTextColor(getResources().getColor(R.color.colorRed));
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        editText.setLayoutParams(layoutParams);
+        TextInputLayout textInputLayout = new TextInputLayout(this);
+        textInputLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        textInputLayout.addView(editText, layoutParams);
+
+        textInputLayout.setHintTextAppearance(R.style.InputLayoutErrorHint);
+        if (id == 0) {
+            editText.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+            textInputLayout.setHint(s);
+
+        } else if (id == 1) {
+            editText.setInputType(InputType.TYPE_CLASS_NUMBER);
+            textInputLayout.setHint(s);
+
+        } else if (id == 2) {
 
 
-        parentLinearLayout.addView(et);
-        Log.e("edit text", "log");
-        Toast.makeText(getBaseContext(), "text input", Toast.LENGTH_LONG).show();
+            editText.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
+            textInputLayout.setHint(s);
+        } else if (id == 3) {
 
+            editText.setInputType(InputType.TYPE_CLASS_PHONE);
+            textInputLayout.setHint(s);
+        } else if (id == 4) {
+            textInputLayout.setHint(s);
+            editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            editText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        }
+
+        parentLinearLayout.addView(textInputLayout);
     }
 
 }

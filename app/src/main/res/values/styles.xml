@@ -22,7 +22,18 @@
         <item name="colorAccent">@color/colorRed</item>
         <item name="colorControlNormal">@color/colorRed</item>
         <item name="colorControlActivated">@color/colorRed</item>
+        <item name="android:textColorHint">@color/colorGrey</item>
 
     </style>
+    <style name="InputLayoutErrorHint" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorRed</item>
+    </style>
 
+    <style name="InputLayoutNormalHint" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorRed</item>
+    </style>
+
+    <style name="InputLayoutAcceptedHint" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorRed</item>
+    </style>
 </resources>
