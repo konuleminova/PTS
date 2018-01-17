@@ -82,13 +82,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <ImageView
+                    <Button
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerInParent="true"
                         android:layout_marginRight="20dp"
-                        android:background="@drawable/editicon" />
+                        android:background="@drawable/editicon"
+                        android:id="@+id/name_editBtn"
+
+                        />
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/usernameWrapper"
@@ -117,13 +120,15 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <ImageView
+                    <Button
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerInParent="true"
                         android:layout_marginRight="20dp"
-                        android:background="@drawable/editicon" />
+                        android:background="@drawable/editicon"
+                        android:id="@+id/sname_editBtn"
+                       />
 
                     <android.support.design.widget.TextInputLayout
 
@@ -156,13 +161,14 @@
 
                     android:orientation="vertical">
 
-                    <ImageView
+                    <Button
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerInParent="true"
                         android:layout_marginRight="20dp"
-                        android:background="@drawable/editicon" />
+                        android:background="@drawable/editicon"
+                        android:id="email_editBtn"/>
 
                     <android.support.design.widget.TextInputLayout
 
@@ -196,13 +202,14 @@
 
                     android:orientation="vertical">
 
-                    <ImageView
+                    <Button
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerInParent="true"
                         android:layout_marginRight="20dp"
-                        android:background="@drawable/editicon" />
+                        android:background="@drawable/editicon"
+                        android:id="@+id/phone_ediBtn"/>
 
                     <android.support.design.widget.TextInputLayout
 
@@ -259,13 +266,14 @@
 
                     </android.support.design.widget.TextInputLayout>
 
-                    <ImageView
+                    <Button
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:background="@drawable/editicon"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="20dp"
-                        android:layout_centerInParent="true"/>
+                        android:layout_centerInParent="true"
+                        android:id="@+id/pass_editBtn"/>
 
                 </RelativeLayout>
             </LinearLayout>

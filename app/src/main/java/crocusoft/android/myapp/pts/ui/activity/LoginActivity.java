@@ -66,8 +66,7 @@ public class LoginActivity extends Activity {
                 forgotPassEditText.setVisibility(View.VISIBLE);
                 forgotPassTextView.setText("Send");
                 //sendForogotPassData();
-                // ViewDialog alert = new ViewDialog();
-                //alert.showDialog(LoginActivity.this,"Alert Dialog ");
+
 
             }
         });
