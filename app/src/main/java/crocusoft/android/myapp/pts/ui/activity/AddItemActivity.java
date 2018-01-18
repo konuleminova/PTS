@@ -1,15 +1,18 @@
 package crocusoft.android.myapp.pts.ui.activity;
 
 import android.app.Activity;
-import android.graphics.Color;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -20,11 +23,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.nio.channels.AcceptPendingException;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import crocusoft.android.myapp.pts.R;
@@ -34,7 +37,6 @@ import crocusoft.android.myapp.pts.network.requests.GetTemplateRequest;
 import crocusoft.android.myapp.pts.network.responses.ArrayItems;
 import crocusoft.android.myapp.pts.network.responses.FormInputs;
 import crocusoft.android.myapp.pts.network.responses.getTemplateResponse;
-import crocusoft.android.myapp.pts.ui.fragments.MainPageFragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -45,6 +47,10 @@ import retrofit2.Response;
 
 public class AddItemActivity extends Activity {
     LinearLayout parentLinearLayout;
+    ImageView i;
+    LinearLayout linearlayoutbuttons;
+    LinearLayout linearlayout;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -113,7 +119,7 @@ public class AddItemActivity extends Activity {
                 addList();
                 break;
             case "PHOTO":
-                addPhoto();
+                addPhoto(formInputs);
 
 
         }
@@ -121,34 +127,90 @@ public class AddItemActivity extends Activity {
 
     }
 
-    private void addPhoto() {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        i = new ImageView(this);
+        // i.setImageDrawable(getResources().getDrawable(R.drawable.images));
+        i.setTranslationY(10);
+        //i.setId(Integer.parseInt(formInputs.getId()));
+        i.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        switch (requestCode) {
 
-        LinearLayout linearlayout = new LinearLayout(this);
+            case 0:
+                if (resultCode == RESULT_OK) {
+                    String returnValue = data.getStringExtra("some_key");
+                    Toast.makeText(getBaseContext(), returnValue, Toast.LENGTH_LONG).show();
+                    Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+                    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                    thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+
+                    i.setImageBitmap(thumbnail);
+                    linearlayout.addView(i);
+
+
+                }
+
+                break;
+            case 1:
+                if (resultCode == RESULT_OK) {
+                    Uri selectedImage = data.getData();
+                    Bitmap bitmap = null;
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                   i.setImageBitmap(bitmap);
+                    linearlayout.addView(i);
+                }
+                break;
+        }
+    }
+
+    private void addPhoto(final FormInputs formInputs) {
+
+        linearlayout = new LinearLayout(this);
         linearlayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         linearlayout.setOrientation(LinearLayout.VERTICAL);
-        linearlayout.setGravity(Gravity.CENTER);
-        ImageView i = new ImageView(this);
-        i.setImageDrawable(getResources().getDrawable(R.drawable.images));
-        i.setTranslationY(10);
-        i.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        linearlayout.addView(i);
-        LinearLayout linearlayoutinside = new LinearLayout(this);
-        linearlayoutinside.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        linearlayoutinside.setOrientation(LinearLayout.HORIZONTAL);
+        linearlayout.setGravity(Gravity.TOP);
+        linearlayoutbuttons = new LinearLayout(this);
+        linearlayoutbuttons.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        linearlayoutbuttons.setOrientation(LinearLayout.HORIZONTAL);
+
         Button b = new Button(this);
         b.setText("TAKE A PHOTO");
+        b.setId(Integer.parseInt(formInputs.getId()));
         b.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        linearlayoutinside.addView(b);
-        linearlayoutinside.setTranslationY(10);
-        linearlayoutinside.setGravity(Gravity.CENTER);
-        linearlayout.setBackgroundColor(getResources().getColor(R.color.colorRed));
-
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                intent.putExtra("some_key", "keyyy");
+                startActivityForResult(intent, 0);
+            }
+        });
+        linearlayoutbuttons.addView(b);
+        linearlayoutbuttons.setTranslationY(10);
+        linearlayoutbuttons.setGravity(Gravity.CENTER);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            linearlayout.setBackground(getResources().getDrawable(R.drawable.add_icon));
+        }
         Button b1 = new Button(this);
         b1.setText("FROM GALLERY");
         b1.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        linearlayoutinside.addView(b1);
-        linearlayout.addView(linearlayoutinside);
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent pickPhoto = new Intent(Intent.ACTION_PICK,
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(pickPhoto, 1);//one can be replaced with any action code
+            }
+        });
+       linearlayoutbuttons.addView(b1);
         parentLinearLayout.addView(linearlayout);
+      parentLinearLayout.addView(linearlayoutbuttons);
+
 
         // setContentView(linearlayout);
     }
