@@ -34,7 +34,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 ViewDialog alert = new ViewDialog();
-                alert.showDialog(getActivity(), 0);
+                alert.showDialog(getActivity(), 0,getContext());
 
             }
         });
@@ -43,7 +43,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 ViewDialog alert = new ViewDialog();
-                alert.showDialog(getActivity(), 1);
+                alert.showDialog(getActivity(), 1,getContext());
 
             }
         });
@@ -52,7 +52,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 ViewDialog alert = new ViewDialog();
-                alert.showDialog(getActivity(), 2);
+                alert.showDialog(getActivity(), 2,getContext());
 
             }
         });
@@ -61,7 +61,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 ViewDialog alert = new ViewDialog();
-                alert.showDialog(getActivity(), 3);
+                alert.showDialog(getActivity(), 3,getContext());
 
             }
         });
@@ -70,7 +70,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 ViewDialog alert = new ViewDialog();
-                alert.showDialog(getActivity(), 4);
+                alert.showDialog(getActivity(), 4,getContext());
 
             }
         });

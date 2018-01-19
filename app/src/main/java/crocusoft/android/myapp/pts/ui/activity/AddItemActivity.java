@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
@@ -18,9 +19,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -29,6 +32,7 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import crocusoft.android.myapp.pts.R;
 import crocusoft.android.myapp.pts.network.ApiClient;
@@ -45,13 +49,17 @@ import retrofit2.Response;
  * Created by Asus on 1/16/2018.
  */
 
-public class AddItemActivity extends Activity {
+public class AddItemActivity extends AppCompatActivity {
 
 
     LinearLayout parentLinearLayout;
-    private static int FROM_CAMERA=0;
-    private static int FROM_GALLERY=1;
+    private static int FROM_CAMERA = 0;
+    private static int FROM_GALLERY = 1;
     private int current_id;
+    int i;
+    boolean aBoolean;
+    final int[] selected_position = {-1};
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -130,18 +138,17 @@ public class AddItemActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode==FROM_CAMERA){
+        if (requestCode == FROM_CAMERA) {
             if (resultCode == RESULT_OK) {
                 Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
                 ByteArrayOutputStream bytes = new ByteArrayOutputStream();
                 thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-                Log.e("ImageId","After"+current_id);
+                Log.e("ImageId", "After" + current_id);
                 ImageView imageView = (ImageView) findViewById(current_id);
                 imageView.setImageBitmap(thumbnail);
 
             }
-        }
-        else if (requestCode==FROM_GALLERY){
+        } else if (requestCode == FROM_GALLERY) {
             if (resultCode == RESULT_OK) {
                 Uri selectedImage = data.getData();
                 Bitmap bitmap = null;
@@ -184,7 +191,7 @@ public class AddItemActivity extends Activity {
             public void onClick(View view) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 current_id = i.getId();
-                Log.e("ImageId","Before"+String.valueOf(current_id));
+                Log.e("ImageId", "Before" + String.valueOf(current_id));
                 startActivityForResult(intent, FROM_CAMERA);
             }
         });
@@ -250,20 +257,40 @@ public class AddItemActivity extends Activity {
         parentLinearLayout.addView(rg);//you add the whole RadioGroup to the layout
     }
 
-    private void addCheckBox(FormInputs formInputs) {
+    private void addCheckBox(final FormInputs formInputs) {
+aBoolean=false;
 
-        for (int i = 0; i < formInputs.getArrayItems().length; i++) {
-            CheckBox cb = new CheckBox(this);
+        final CheckBox checkBox[]  = new CheckBox[formInputs.getArrayItems().length];
+        for (i = 0; i <formInputs.getArrayItems().length; i++) {
 
+            checkBox[i] = new CheckBox(this);
+            final boolean[] checkedItems = new boolean[formInputs.getArrayItems().length];
             ArrayItems[] arrayItems = formInputs.getArrayItems();
-            cb.setText(arrayItems[i].getValue());
-            cb.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            cb.setId(i);
-            cb.setTextColor(getResources().getColor(R.color.colorRed));
-            parentLinearLayout.addView(cb);
+            checkBox[i].setText(arrayItems[i].getValue());
+            checkBox[i].setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            checkBox[i].setId(i);
+            checkBox[i].setTextColor(getResources().getColor(R.color.colorRed));
+            parentLinearLayout.addView(checkBox[i]);
+
+            checkBox[i].setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    Toast.makeText(getBaseContext(), checkBox[0].getText(), Toast.LENGTH_SHORT).show();
+
+                    //Here call this method on all checkbox except you want to check single checkbox.
+                  aBoolean=true;
+
+                }
+            });
 
         }
+        if (aBoolean) {
+            for (i = 0; i < formInputs.getArrayItems().length; i++) {
+                
+                checkBox[i].setChecked(false);
 
+            }
+        }
     }
 
     void addTextInputLayout(int id, String s) {
