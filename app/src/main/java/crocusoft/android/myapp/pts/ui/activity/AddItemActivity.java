@@ -46,12 +46,12 @@ import retrofit2.Response;
  */
 
 public class AddItemActivity extends Activity {
+
+
     LinearLayout parentLinearLayout;
-    ImageView i;
-    LinearLayout linearlayoutbuttons;
-    LinearLayout linearlayout;
-
-
+    private static int FROM_CAMERA;
+    private static int FROM_GALLERY;
+    private int current_id;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,7 +97,6 @@ public class AddItemActivity extends Activity {
         String s = formInputs.getPlaceholder();
         switch (formInputs.getTypeName()) {
             case "TEXT":
-
                 addTextInputLayout(0, s);
                 break;
             case "NUMBER":
@@ -130,51 +129,49 @@ public class AddItemActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        i = new ImageView(this);
-        // i.setImageDrawable(getResources().getDrawable(R.drawable.images));
-        i.setTranslationY(10);
-        //i.setId(Integer.parseInt(formInputs.getId()));
-        i.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        switch (requestCode) {
 
-            case 0:
-                if (resultCode == RESULT_OK) {
-                    String returnValue = data.getStringExtra("some_key");
-                    Toast.makeText(getBaseContext(), returnValue, Toast.LENGTH_LONG).show();
-                    Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
-                    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                    thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        if (requestCode==FROM_CAMERA){
+            if (resultCode == RESULT_OK) {
+//                Bundle bundle = data.getExtras();
+//                int returnValue = data.getIntExtra("image_id",0);
+                Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+                ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+                Log.e("ImageId","After"+current_id);
+                ImageView imageView = (ImageView) findViewById(current_id);
+                imageView.setImageBitmap(thumbnail);
 
-                    i.setImageBitmap(thumbnail);
-                    linearlayout.addView(i);
-
-
-                }
-
-                break;
-            case 1:
-                if (resultCode == RESULT_OK) {
-                    Uri selectedImage = data.getData();
-                    Bitmap bitmap = null;
-                    try {
-                        bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                   i.setImageBitmap(bitmap);
-                    linearlayout.addView(i);
-                }
-                break;
+            }
         }
+        else if (requestCode==FROM_GALLERY){
+            if (resultCode == RESULT_OK) {
+                Uri selectedImage = data.getData();
+                Bitmap bitmap = null;
+                try {
+                    bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
+
     }
 
     private void addPhoto(final FormInputs formInputs) {
 
-        linearlayout = new LinearLayout(this);
+
+        LinearLayout linearlayout = new LinearLayout(this);
         linearlayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         linearlayout.setOrientation(LinearLayout.VERTICAL);
         linearlayout.setGravity(Gravity.TOP);
-        linearlayoutbuttons = new LinearLayout(this);
+        final ImageView i = new ImageView(this);
+        i.setTranslationY(10);
+        i.setId(Integer.parseInt(formInputs.getId()));
+        i.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        linearlayout.addView(i);
+
+        LinearLayout linearlayoutbuttons = new LinearLayout(this);
         linearlayoutbuttons.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         linearlayoutbuttons.setOrientation(LinearLayout.HORIZONTAL);
 
@@ -186,8 +183,13 @@ public class AddItemActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                intent.putExtra("some_key", "keyyy");
-                startActivityForResult(intent, 0);
+                current_id = i.getId();
+               // Bundle bundle = new Bundle();
+                //bundle.putInt("image_id",i.getId());
+                Log.e("ImageId","Before"+String.valueOf(current_id));
+                //intent.putExtras(bundle);
+
+                startActivityForResult(intent, FROM_CAMERA);
             }
         });
         linearlayoutbuttons.addView(b);
@@ -207,9 +209,9 @@ public class AddItemActivity extends Activity {
                 startActivityForResult(pickPhoto, 1);//one can be replaced with any action code
             }
         });
-       linearlayoutbuttons.addView(b1);
+        linearlayoutbuttons.addView(b1);
         parentLinearLayout.addView(linearlayout);
-      parentLinearLayout.addView(linearlayoutbuttons);
+        parentLinearLayout.addView(linearlayoutbuttons);
 
 
         // setContentView(linearlayout);
