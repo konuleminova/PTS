@@ -49,8 +49,8 @@ public class AddItemActivity extends Activity {
 
 
     LinearLayout parentLinearLayout;
-    private static int FROM_CAMERA;
-    private static int FROM_GALLERY;
+    private static int FROM_CAMERA=0;
+    private static int FROM_GALLERY=1;
     private int current_id;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -132,8 +132,6 @@ public class AddItemActivity extends Activity {
 
         if (requestCode==FROM_CAMERA){
             if (resultCode == RESULT_OK) {
-//                Bundle bundle = data.getExtras();
-//                int returnValue = data.getIntExtra("image_id",0);
                 Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
                 ByteArrayOutputStream bytes = new ByteArrayOutputStream();
                 thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
@@ -149,6 +147,8 @@ public class AddItemActivity extends Activity {
                 Bitmap bitmap = null;
                 try {
                     bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
+                    ImageView imageView = (ImageView) findViewById(current_id);
+                    imageView.setImageBitmap(bitmap);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -184,11 +184,7 @@ public class AddItemActivity extends Activity {
             public void onClick(View view) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 current_id = i.getId();
-               // Bundle bundle = new Bundle();
-                //bundle.putInt("image_id",i.getId());
                 Log.e("ImageId","Before"+String.valueOf(current_id));
-                //intent.putExtras(bundle);
-
                 startActivityForResult(intent, FROM_CAMERA);
             }
         });
@@ -204,9 +200,10 @@ public class AddItemActivity extends Activity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                current_id = i.getId();
                 Intent pickPhoto = new Intent(Intent.ACTION_PICK,
                         MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(pickPhoto, 1);//one can be replaced with any action code
+                startActivityForResult(pickPhoto, FROM_GALLERY);//one can be replaced with any action code
             }
         });
         linearlayoutbuttons.addView(b1);
@@ -257,6 +254,7 @@ public class AddItemActivity extends Activity {
 
         for (int i = 0; i < formInputs.getArrayItems().length; i++) {
             CheckBox cb = new CheckBox(this);
+
             ArrayItems[] arrayItems = formInputs.getArrayItems();
             cb.setText(arrayItems[i].getValue());
             cb.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
