@@ -58,7 +58,6 @@ public class AddItemActivity extends AppCompatActivity {
     private int current_id;
     int i;
     boolean aBoolean;
-    final int[] selected_position = {-1};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -123,7 +122,7 @@ public class AddItemActivity extends AppCompatActivity {
                 addradioButton();
                 break;
             case "LIST":
-                addList();
+                addList(formInputs);
                 break;
             case "PHOTO":
                 addPhoto(formInputs);
@@ -137,7 +136,6 @@ public class AddItemActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == FROM_CAMERA) {
             if (resultCode == RESULT_OK) {
                 Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
@@ -166,8 +164,6 @@ public class AddItemActivity extends AppCompatActivity {
     }
 
     private void addPhoto(final FormInputs formInputs) {
-
-
         LinearLayout linearlayout = new LinearLayout(this);
         linearlayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         linearlayout.setOrientation(LinearLayout.VERTICAL);
@@ -221,23 +217,19 @@ public class AddItemActivity extends AppCompatActivity {
         // setContentView(linearlayout);
     }
 
-    private void addList() {
+    private void addList(FormInputs formInputs) {
+        String[] spinnerArray = new String[formInputs.getArrayItems().length];
 
 
-        //RelativeLayout linearlayout = (RelativeLayout)findViewById(R.id.main_layout);
-
-        ArrayList<String> spinnerArray = new ArrayList<String>();
-        spinnerArray.add("one");
-        spinnerArray.add("two");
-        spinnerArray.add("three");
-        spinnerArray.add("four");
-        spinnerArray.add("five");
+        for (int i = 0;i<formInputs.getArrayItems().length;i++){
+            spinnerArray[i] = formInputs.getArrayItems()[i].getValue();
+        }
 
         Spinner spinner = new Spinner(this);
         spinner.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, spinnerArray);
+        ArrayAdapter<String> spinnerArrayAdapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, spinnerArray);
         spinner.setAdapter(spinnerArrayAdapter);
-
         parentLinearLayout.addView(spinner);
 
 
@@ -258,41 +250,53 @@ public class AddItemActivity extends AppCompatActivity {
     }
 
     private void addCheckBox(final FormInputs formInputs) {
-aBoolean=false;
+        aBoolean=false;
+        final CheckBox[] checkBoxes = new CheckBox[formInputs.getArrayItems().length];
 
-        final CheckBox checkBox[]  = new CheckBox[formInputs.getArrayItems().length];
-        for (i = 0; i <formInputs.getArrayItems().length; i++) {
+        for(int i = 0;i<formInputs.getArrayItems().length;i++){
+            CheckBox checkBox = null;
+            checkBox = new CheckBox(this);
+            checkBox.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            checkBox.setId(Integer.parseInt(formInputs.getArrayItems()[i].getId()));
+            checkBox.setTextColor(getResources().getColor(R.color.colorRed));
+            checkBox.setText(formInputs.getArrayItems()[i].getValue());
+            checkBoxes[i]=checkBox;
+            parentLinearLayout.addView(checkBox);
 
-            checkBox[i] = new CheckBox(this);
-            final boolean[] checkedItems = new boolean[formInputs.getArrayItems().length];
-            ArrayItems[] arrayItems = formInputs.getArrayItems();
-            checkBox[i].setText(arrayItems[i].getValue());
+            final CheckBox finalCheckBox = checkBox;
+            checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    if (b) {
+                        for (int j = 0; j < checkBoxes.length; j++) {
+                            CheckBox inArraycheckBox = checkBoxes[j];
+                            if (inArraycheckBox.isChecked()) {
+                                inArraycheckBox.setChecked(false);
+                            }
+                        }
+                    }
+                    finalCheckBox.setChecked(b);
+                }
+            });
+        }
+
+
+        /*
+         checkBox[i].setText(arrayItems[i].getValue());
             checkBox[i].setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             checkBox[i].setId(i);
             checkBox[i].setTextColor(getResources().getColor(R.color.colorRed));
-            parentLinearLayout.addView(checkBox[i]);
+         */
 
-            checkBox[i].setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                    Toast.makeText(getBaseContext(), checkBox[0].getText(), Toast.LENGTH_SHORT).show();
 
-                    //Here call this method on all checkbox except you want to check single checkbox.
-                  aBoolean=true;
-
-                }
-            });
-
-        }
-        if (aBoolean) {
-            for (i = 0; i < formInputs.getArrayItems().length; i++) {
-                
-                checkBox[i].setChecked(false);
-
-            }
-        }
     }
 
+
+    /**
+     * Konul bura diqqet yetir
+     * @param id bu paramaeter neye lazimdi?
+     * @param s
+     */
     void addTextInputLayout(int id, String s) {
         super.setTheme(R.style.TextLabelRed);
         EditText editText = new EditText(this);
